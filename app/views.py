@@ -3,7 +3,6 @@
 from flask import request, redirect
 
 from app import app
-from config import ALIPAY_URL, TENPAY_URL
 
 
 @app.route('/')
@@ -12,9 +11,9 @@ def gateway():
     agent = agent.lower()
 
     if agent.find('micromessenger') != -1:
-        return redirect(TENPAY_URL)
+        return "wechat"
 
     if agent.find('alipay') != -1:
-        return redirect(ALIPAY_URL)
+        return "alipay"
 
-    return 'error'
+    return 'please use wechat or alipay'
